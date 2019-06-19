@@ -8,13 +8,14 @@ import logoreact from '../../assets/images/logoReact.png'
 
 const Footer = () => {
   return (
-    <Segment inverted vertical style={{ padding: '5em 0em', marginTop: '-14px' }}>
+    <Segment inverted vertical style={{ padding: '3em 0em', marginTop: '0px' }}>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='FullStack Developer' />
               <List link inverted>
+                <List.Item >Home</List.Item>
                 <List.Item >NodeJS</List.Item>
                 <List.Item >ReactJS</List.Item>
                 <List.Item >React Native</List.Item>                  

@@ -15,10 +15,10 @@ export const PostList = styled.section`
     justify-content: center;    
   }
   
-  @media (min-width: 368px) {    
+  @media (min-width: 320px) {    
    padding: 30px;    
    h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;    
    } 
   }
   @media (min-width: 1100px) {    
@@ -79,10 +79,10 @@ export const LastPost= styled(PostList)`
     display: block;     
     header {  
       width: 100%;  
-      padding: 60px 30px 60px 60px;
+      padding: 30px 20px 30px 30px;
     }
     h2 {
-      font-size: 1.8rem;  
+      font-size: 1.6rem;  
     }      
     div {     
       width: 100%;
