@@ -5,6 +5,7 @@ import { isAuthenticated } from './services/auth'
 
 import Home from './screens/HomePosts'
 import Post from './screens/Post'
+import PostsCategory from './screens/PostsCategory'
 import NavBarMenu from './components/NavBarMenu'
 import Footer from './components/Footer'
 
@@ -27,6 +28,7 @@ const Routes = () => (
       <Switch>            
           <Route exact path='/' component={Home} />
           <Route path='/post' component={Post} />
+          <Route path='/postscategory' component={PostsCategory} />
           <PrivateRoute path='/admin' component={() => <h1>Painel Administrativo</h1>} />
           <Route path='*' component={() => <h2>Página não encontrada!! 404 - Error</h2>} />
       </Switch>   
