@@ -1,101 +1,54 @@
-import React from 'react'
-import { Icon, Grid, Divider, Header, Segment, Image } from 'semantic-ui-react'
+import React, { useState, useEffect } from 'react'
+
+import api from '../../services/api'
+import { Grid, Divider } from 'semantic-ui-react'
 
 import { PostList, CardPost }from './PostsCategoryStyles'
 
-import nodejs from '../../assets/images/nodejs.png'
-import reactjs from '../../assets/images/react.jpg'
-import js from '../../assets/images/javascript.png'
-import logojs from '../../assets/images/logojs.png'
-import logonode from '../../assets/images/logoNode.png'
-import logoreact from '../../assets/images/logoReact.png'
+const CategoriesPosts = (props) => {
+  const [ posts, setPosts ] = useState([])
+  const [ error, setError ] = useState(false)
+  const [ category, setCategory ] = useState('')
 
-const CategoriesPosts = () => {
+  const url = props.match.url
+  
+  useEffect(() => {
+    async function fecthData() {
+      const postsCategory = await api.get(url)       
+      
+      if(!postsCategory.data.error) {
+        setPosts(postsCategory.data.data)       
+        setCategory(postsCategory.data.data[0].category)
+      } else {
+          setError(true)
+      }      
+    }
+
+    fecthData()
+  }, [])
+
   return (   
     <div>
-    <PostList>
-      <h1>NodeJS</h1>
-      <Grid> 
-        <CardPost>
-          <article>
-            <img src={reactjs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>              
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={nodejs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={js} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={nodejs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={js} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost> 
-
-        <CardPost>
-          <article>
-            <img src={reactjs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={reactjs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>    
-      </Grid>
-    </PostList>
-    <Divider hidden />
-    <Divider hidden /> 
+      <PostList>
+        <h1>{category}</h1>
+        <Grid>
+          { error ? (<p>Nenhum registro encontrado!</p>) :
+            posts.map(post => (
+            <CardPost>
+              <article>
+                <img src={`http://localhost:3001/files/${post.image_url}`} alt='image reactjs' />  
+                <div>          
+                  <h2>{post.title}</h2>
+                  <h4>Por <strong>{post.name}</strong> {post.date}</h4>              
+                  <h5>{post.category}</h5> 
+                </div>      
+              </article>      
+            </CardPost>  ))
+          }
+        </Grid>
+      </PostList>
+      <Divider hidden />
+      <Divider hidden /> 
     </div>
   )
 }

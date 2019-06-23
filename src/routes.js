@@ -28,7 +28,7 @@ const Routes = () => (
       <Switch>            
           <Route exact path='/' component={Home} />
           <Route path='/post' component={Post} />
-          <Route path='/postscategory' component={PostsCategory} />
+          <Route path='/posts/category/:id' component={PostsCategory} />
           <PrivateRoute path='/admin' component={() => <h1>Painel Administrativo</h1>} />
           <Route path='*' component={() => <h2>Página não encontrada!! 404 - Error</h2>} />
       </Switch>   

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import api from '../../services/api'
 import { Icon, Grid, Divider, Header, Segment, Image } from 'semantic-ui-react'
 
 import { PostList, LastPost, CardPost, CategoriesList, HeaderPost }from './HomeStyles'
@@ -6,40 +8,69 @@ import { PostList, LastPost, CardPost, CategoriesList, HeaderPost }from './HomeS
 import nodejs from '../../assets/images/nodejs.png'
 import reactjs from '../../assets/images/react.jpg'
 import js from '../../assets/images/javascript.png'
-import logojs from '../../assets/images/logojs.png'
-import logonode from '../../assets/images/logoNode.png'
-import logoreact from '../../assets/images/logoReact.png'
+
 
 const HomePosts = () => {
-  return (   
-    <div>    
-    
+  const [ posts, setPosts ] = useState([])
+  const [ lastPost, setLastPost ] = useState({})
+  const [ categories, setCategories ] = useState([])
 
-    <HeaderPost>
+  useEffect(() => {
+    async function fetchData() {
+      const allPost = await api.get('/posts')
+      const PostLast = allPost.data.data[0]      
+      
+      setLastPost(PostLast)  
+      setPosts(allPost.data.data)
+    }
+
+    fetchData()      
+  }, [])
+
+  useEffect(() => {
+    async function fetchData() {
+      const categorias = await api.get('/categories')
+      
+      setCategories(categorias.data.data)
+    }
+
+    fetchData()
+  }, [])
+
+  const renderPosts = (post) => {
+    return (
+      <CardPost key={post.id}>
+        <article>
+          <img src={`http://localhost:3001/files/${post.image_url}`} alt='image' />  
+          <div>          
+            <h2>{post.title}</h2>
+            <h4>Por <strong>{post.name} </strong>{post.date}</h4>              
+            <h5>{post.category}</h5> 
+          </div>      
+        </article>      
+      </CardPost> )
+  }
+
+  return (   
+    <div>
+    <HeaderPost>      
       <CategoriesList>
         <div>
           <h1>Categorias</h1>
-          <span>NodeJS</span>          
-          <span>ReactJS</span>
-          <span>React Native</span>
-          <span>Sequelize</span>
-          <span>Express</span>
-          <span>Socket io</span>
-          <span>NodeJS</span>
-          <span>ReactJS</span>
-          <span>React Native</span>
-          <span>Sequelize</span> 
+          {
+            categories.map(cat =>  (<span><Link to={`/posts/category/${cat.id}`}>{cat.name}</Link></span>))
+          }          
         </div>
-      </CategoriesList>
+      </CategoriesList>      
       <LastPost>        
         <div>        
-          <img src={nodejs} alt='image Nodejs' />  
+          <img src={`http://localhost:3001/files/${lastPost.image_url}`} alt='image' />  
         </div>
         <header>          
           <span><Icon name='star'/> DESTAQUE</span>   
-          <h2>Desenvolvendo todo o Backend simplesmente com NodeJS</h2>
-          <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 2 dias</h4>
-          <h5>NodeJS</h5>
+          <h2>{lastPost.title}</h2>
+          <h4>Por <strong>{lastPost.name}</strong> {lastPost.date}</h4>
+          <h5>{lastPost.category}</h5>
         </header>
       </LastPost>      
     </HeaderPost> 
@@ -52,82 +83,11 @@ const HomePosts = () => {
         </Header>
       </Divider> 
       <Grid> 
-        <CardPost>
-          <article>
-            <img src={reactjs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>              
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={nodejs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={js} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={nodejs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={js} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost> 
-
-        <CardPost>
-          <article>
-            <img src={reactjs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>  
-
-        <CardPost>
-          <article>
-            <img src={reactjs} alt='image reactjs' />  
-            <div>          
-              <h2>Desenvolvendo todo o Frontend simplesmente com ReactJS</h2>
-              <h4>Por <strong>CÉZAR ZAMPIERI</strong> há 5 dias</h4>
-              <h5>ReactJS</h5> 
-            </div>      
-          </article>      
-        </CardPost>    
+        {  
+          Object
+          .keys(posts)
+          .map( key => renderPosts(posts[key]))
+        }       
       </Grid>
     </PostList>
     <Divider hidden />
