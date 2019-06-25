@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Icon, Image } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
 
 import { Nav, BarraMenu } from './NavBarMenuStyles'
 
@@ -21,17 +21,19 @@ const NavBarMenu = () => {
           <a href='#'>React Native</a>        
         </div>      
       </Nav>
-      <BarraMenu>
-        <Image.Group size='mini' style={{ marginRight: '30px'}}>                
-          <Image src={logonode} style={{ marginBottom: 0}}  />
-        </Image.Group>
-        <h1>
-          DevJS | BLOG         
-        </h1>    
-        <Image.Group size='mini' style={{ marginLeft: '30px'}}>
-          <Image src={logoreact} style={{ marginBottom: 0}} />              
-        </Image.Group>
-      </BarraMenu>      
+      <Link to='/'>
+        <BarraMenu>        
+          <Image.Group size='mini' style={{ marginRight: '30px'}}>                
+            <Image src={logonode} style={{ marginBottom: 0}}  />
+          </Image.Group>
+          <h1>
+            DevJS | BLOG         
+          </h1>    
+          <Image.Group size='mini' style={{ marginLeft: '30px'}}>
+            <Image src={logoreact} style={{ marginBottom: 0}} />              
+          </Image.Group>          
+        </BarraMenu> 
+      </Link>
     </div>
   )  
 }

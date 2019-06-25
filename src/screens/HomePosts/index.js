@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
 import api from '../../services/api'
+import HeaderHome from '../../components/NavBarMenu'
+import Footer from '../../components/Footer'
+
 import { Icon, Grid, Divider, Header, Segment, Image } from 'semantic-ui-react'
 
 import { PostList, LastPost, CardPost, CategoriesList, HeaderPost }from './HomeStyles'
@@ -53,6 +57,7 @@ const HomePosts = () => {
 
   return (   
     <div>
+    <HeaderHome />
     <HeaderPost>      
       <CategoriesList>
         <div>
@@ -92,6 +97,7 @@ const HomePosts = () => {
     </PostList>
     <Divider hidden />
     <Divider hidden /> 
+    <Footer />
     </div>
   )
 }

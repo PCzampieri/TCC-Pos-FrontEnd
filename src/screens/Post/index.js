@@ -1,12 +1,17 @@
 import React from 'react'
 
+import HeaderHome from '../../components/NavBarMenu'
+import Footer from '../../components/Footer'
+
 import { MainPost, Header, PostContent } from './PostStyle'
 
 import nodejs from '../../assets/images/nodejs.png'
 
 const Post = () => {
   return (
-    <MainPost>
+    <div>
+    <HeaderHome />
+    <MainPost>      
       <Header>
         <h2>Desenvolvendo todo o Backend simplesmente com NodeJS</h2>
         <h3>Por CÉZAR ZAMPIERI há 2 dias</h3>
@@ -32,6 +37,8 @@ const Post = () => {
         </p>
       </PostContent>
     </MainPost>
+    <Footer/>
+    </div>
   )
 }
 

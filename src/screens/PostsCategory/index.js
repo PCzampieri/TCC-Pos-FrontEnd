@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
 import api from '../../services/api'
+import HeaderHome from '../../components/NavBarMenu'
+import Footer from '../../components/Footer'
+
 import { Grid, Divider } from 'semantic-ui-react'
 
 import { PostList, CardPost }from './PostsCategoryStyles'
@@ -29,6 +32,7 @@ const CategoriesPosts = (props) => {
 
   return (   
     <div>
+      <HeaderHome />
       <PostList>
         <h1>{category}</h1>
         <Grid>
@@ -49,6 +53,7 @@ const CategoriesPosts = (props) => {
       </PostList>
       <Divider hidden />
       <Divider hidden /> 
+      <Footer />
     </div>
   )
 }
