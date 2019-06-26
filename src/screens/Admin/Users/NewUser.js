@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-
-import { Button, Icon, Input } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 import Header from '../../Admin/Header'
 import { Form, Container, BaseButton } from './UsersStyles'
-
 import api from '../../../services/api'
 
 const NewUser = props => {
@@ -24,6 +22,8 @@ const NewUser = props => {
       setIsErrorValid(false)
       setErrorValid('')
       setName('')
+      setEmail('')
+      setPasswd('')      
       setSeccess(true)
 
     } catch(err) {

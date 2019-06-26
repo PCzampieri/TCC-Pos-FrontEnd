@@ -31,7 +31,6 @@ export const Header = styled(MainPost)`
   hr {
     margin-top: 20px;
   }
-
 `
 export const PostContent = styled.div`
   width: 100%;
@@ -39,6 +38,10 @@ export const PostContent = styled.div`
   margin: 0 auto;
   margin-top: 30px;
   padding-bottom: 30px;
+
+  h1 {
+    text-align: center;
+  }
     
   img {
     width: 100%;  

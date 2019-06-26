@@ -1,43 +1,55 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Markdown from 'markdown-to-jsx'
 
 import HeaderHome from '../../components/NavBarMenu'
 import Footer from '../../components/Footer'
 
+import api from '../../services/api'
 import { MainPost, Header, PostContent } from './PostStyle'
 
-import nodejs from '../../assets/images/nodejs.png'
+const Post = props => {
+  const [ post, setPost ] = useState('')
+  const [ title, setTitle ] = useState('')
+  const [ image_url, setImage_url ] = useState(null)
+  const [ category, setCategory ] = useState('')
+  const [ name, setName ] = useState('')
+  const [ date, setDate ] = useState('')
 
-const Post = () => {
+  const id = props.match.params.id
+
+  useEffect(() => {
+    async function fetchData() {
+      const postApi = await api.get(`/posts/${id}`)
+
+      setTitle(postApi.data.data.title)
+      setPost(postApi.data.data.post)
+      setDate(postApi.data.data.date)
+      setImage_url(postApi.data.data.image_url)
+      setName(postApi.data.data.name)
+      setCategory(postApi.data.data.category)
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <div>
-    <HeaderHome />
-    <MainPost>      
-      <Header>
-        <h2>Desenvolvendo todo o Backend simplesmente com NodeJS</h2>
-        <h3>Por CÉZAR ZAMPIERI há 2 dias</h3>
-        <span>NodeJS</span>
-        <hr />
-      </Header>
-
-      <PostContent>        
-        <img src={nodejs} alt='Imagem' />
-        <p>
-          Where does it come from?
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-          classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin 
-          professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
-          consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical 
-          literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of          
-          "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book
-          is a treatise on the theory of ethics, very popular during the Renaissance. The first line of 
-          Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.        
-          The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. 
-          Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced 
-          in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-        </p>
-      </PostContent>
-    </MainPost>
-    <Footer/>
+      <HeaderHome />
+      <MainPost>      
+        <Header>
+          <h2>{title}</h2>
+          <h3>Por {name} - {date}</h3>
+          <span>{category}</span>
+          <hr />
+        </Header>
+        <PostContent>        
+          <img src={`http://localhost:3001/files/${image_url}`} alt='Imagem' />
+          <Markdown>
+            {post}
+          </Markdown>
+        </PostContent>
+      </MainPost>
+      <Footer/>
     </div>
   )
 }

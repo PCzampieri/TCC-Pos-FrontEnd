@@ -43,16 +43,19 @@ const HomePosts = () => {
 
   const renderPosts = (post) => {
     return (
-      <CardPost key={post.id}>
-        <article>
-          <img src={`http://localhost:3001/files/${post.image_url}`} alt='image' />  
-          <div>          
-            <h2>{post.title}</h2>
-            <h4>Por <strong>{post.name} </strong>{post.date}</h4>              
-            <h5>{post.category}</h5> 
-          </div>      
-        </article>      
-      </CardPost> )
+      <Link to={`/posts/${post.id}`} >
+        <CardPost key={post.id}>
+          <article>
+            <img src={`http://localhost:3001/files/${post.image_url}`} alt='image' />  
+            <div>          
+              <h2>{post.title}</h2>
+              <h4>Por <strong>{post.name} </strong>{post.date}</h4>              
+              <h5>{post.category}</h5> 
+            </div>      
+          </article>      
+        </CardPost> 
+      </Link>
+    )
   }
 
   return (   
@@ -67,17 +70,20 @@ const HomePosts = () => {
           }          
         </div>
       </CategoriesList>      
-      <LastPost>        
-        <div>        
-          <img src={`http://localhost:3001/files/${lastPost.image_url}`} alt='image' />  
-        </div>
-        <header>          
-          <span><Icon name='star'/> DESTAQUE</span>   
-          <h2>{lastPost.title}</h2>
-          <h4>Por <strong>{lastPost.name}</strong> {lastPost.date}</h4>
-          <h5>{lastPost.category}</h5>
-        </header>
-      </LastPost>      
+      
+      <Link to={`/posts/${lastPost.id}`}>
+        <LastPost>        
+          <div>        
+            <img src={`http://localhost:3001/files/${lastPost.image_url}`} alt='image' />  
+          </div>
+          <header>          
+            <span><Icon name='star'/> DESTAQUE</span>   
+            <h2>{lastPost.title}</h2>
+            <h4>Por <strong>{lastPost.name}</strong> {lastPost.date}</h4>
+            <h5>{lastPost.category}</h5>
+          </header>
+        </LastPost>      
+      </Link>
     </HeaderPost> 
 
     <PostList>        

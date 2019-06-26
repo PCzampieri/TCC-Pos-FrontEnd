@@ -62,7 +62,8 @@ export const LastPost= styled(HeaderPost)`
   img {
     width: 100%;  
     margin: 0;
-    padding: 0;     
+    padding: 0;   
+    border-radius: 5px 0 0 5px;  
   }
   span {
     font-size: 10px;
@@ -88,6 +89,9 @@ export const LastPost= styled(HeaderPost)`
     }
     h2 {
       font-size: 1.6rem;  
+    }
+    img {
+      border-radius: 5px 5px 0 0;  
     }      
     div {     
       width: 100%;
@@ -157,15 +161,17 @@ export const CategoriesList = styled(HeaderPost)`
 
 export const CardPost= styled(PostList)`  
   @media (min-width: 200px) { 
-    width: 100%; 
-    max-width: 360px;
+    width: 100%;     
+    max-width: 360px;   
     margin: auto;
-    margin-top: 30px;    
     padding: 0px;
   
     article {     
       width: 100%;
-      margin: 0;
+      max-width: 360px;            
+      margin: 0;  
+      margin-top: 20px;  
+      
       padding: 0;    
       background: #fff;  
       border-radius: 5px;  
@@ -179,6 +185,7 @@ export const CardPost= styled(PostList)`
         margin:0;      
       }
       h2 {
+        display: block;
         font-size: 1.6rem;
       }
       h4 {
@@ -231,11 +238,14 @@ export const CardPost= styled(PostList)`
   @media (min-width: 1100px) { 
     width: 33.333%; 
     margin: auto;
+    margin-bottom: 30px;
     padding: 30px;
   
     article {     
       width: 100%;
       margin: 0;
+      
+      
       padding: 0;    
       background: #fff;  
       border-radius: 5px;  

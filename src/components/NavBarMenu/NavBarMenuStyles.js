@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 export const Nav = styled.div`
   border-bottom: 1px solid #EAEAEB;
-  text-align: right;
+  text-align: center;
   height: 50px;
   line-height: 50px;
   background: #fff;
 
   .menu {
-    margin: 0 60px 0 0;
+    margin: 0;
   }
   .menu a {
     clear: right;

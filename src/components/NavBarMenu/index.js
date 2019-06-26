@@ -11,6 +11,19 @@ import logoreact from '../../assets/images/logoReact.png'
 const NavBarMenu = () => {
   return (
     <div>
+    <Link to='/'>
+    <BarraMenu>        
+      <Image.Group size='mini' style={{ marginRight: '30px'}}>                
+        <Image src={logonode} style={{ marginBottom: 0}}  />
+      </Image.Group>
+      <h1>
+        DevJS | BLOG         
+      </h1>    
+      <Image.Group size='mini' style={{ marginLeft: '30px'}}>
+        <Image src={logoreact} style={{ marginBottom: 0}} />              
+      </Image.Group>          
+    </BarraMenu> 
+  </Link>
       <Nav>
         <label htmlFor='toggle'>&#9776;</label>
         <input type='checkbox' id='toggle' />
@@ -21,19 +34,7 @@ const NavBarMenu = () => {
           <a href='#'>React Native</a>        
         </div>      
       </Nav>
-      <Link to='/'>
-        <BarraMenu>        
-          <Image.Group size='mini' style={{ marginRight: '30px'}}>                
-            <Image src={logonode} style={{ marginBottom: 0}}  />
-          </Image.Group>
-          <h1>
-            DevJS | BLOG         
-          </h1>    
-          <Image.Group size='mini' style={{ marginLeft: '30px'}}>
-            <Image src={logoreact} style={{ marginBottom: 0}} />              
-          </Image.Group>          
-        </BarraMenu> 
-      </Link>
+     
     </div>
   )  
 }

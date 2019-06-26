@@ -11,7 +11,7 @@ const Header = props => {
       <Container>     
         <Menu>  
           <Menu.Item style={{padding: '0'}}>
-            <Image src={logoBlog} alt='logo' size='small' />
+            <Link to='/'><Image src={logoBlog} alt='logo' size='small' /></Link>
           </Menu.Item> 
           <Menu.Item as={Link} to='/admin/homeadmin'>Home</Menu.Item> 
           <Menu.Item as={Link} to='/admin/users'>Usuários</Menu.Item> 
