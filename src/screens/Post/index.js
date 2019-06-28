@@ -4,6 +4,7 @@ import ReactDisqusComments from 'react-disqus-comments'
 
 import HeaderHome from '../../components/NavBarMenu'
 import Footer from '../../components/Footer'
+import DateFormat from '../../components/DateFormat'
 
 import api from '../../services/api'
 import { MainPost, Header, PostContent } from './PostStyle'
@@ -14,7 +15,7 @@ const Post = props => {
   const [ image_url, setImage_url ] = useState(null)
   const [ category, setCategory ] = useState('')
   const [ name, setName ] = useState('')
-  const [ date, setDate ] = useState('') 
+  const [ created_at, setCreated_at ] = useState('') 
 
   const id = props.match.params.id
 
@@ -24,7 +25,7 @@ const Post = props => {
 
       setTitle(postApi.data.data.title)
       setPost(postApi.data.data.post)
-      setDate(postApi.data.data.date)
+      setCreated_at(postApi.data.data.created_at)
       setImage_url(postApi.data.data.image_url)
       setName(postApi.data.data.name)
       setCategory(postApi.data.data.category)     
@@ -42,9 +43,11 @@ const Post = props => {
       <HeaderHome />
       <MainPost>      
         <Header>
-          <h2>{title}</h2>
-          <h3>Por {name} - {date}</h3>
-          <span>{category}</span>
+          <div>
+            <h2>{title}</h2>
+            <h3>Por {name} em <DateFormat date={created_at} /></h3>
+            <h6>{category}</h6>
+          </div>
           <hr />
         </Header>
         <PostContent>        

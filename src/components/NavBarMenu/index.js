@@ -8,7 +8,9 @@ import { Nav, BarraMenu } from './NavBarMenuStyles'
 import logonode from '../../assets/images/logoNode.png'
 import logoreact from '../../assets/images/logoReact.png'
 
-const NavBarMenu = () => {
+const NavBarMenu = (props) => {
+
+  console.log()
   return (
     <div>
     <Link to='/'>

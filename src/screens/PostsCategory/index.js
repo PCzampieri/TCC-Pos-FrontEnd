@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import HeaderHome from '../../components/NavBarMenu'
 import Footer from '../../components/Footer'
+import DateFormat from '../../components/DateFormat'
 
 import { Grid, Divider } from 'semantic-ui-react'
 
@@ -40,12 +41,12 @@ const CategoriesPosts = (props) => {
           { error ? (<p>Nenhum registro encontrado!</p>) :
             posts.map(post => (
             <CardPost>
-              <Link to={`/posts/${post.id}`}>
+              <Link to={`/posts/${post.id}`} style={{textDecoration: 'none'}}>
                 <article>
                   <img src={`http://localhost:3001/files/${post.image_url}`} alt='image reactjs' />  
-                  <div>          
-                    <h2>{post.title}</h2>
-                    <h4>Por <strong>{post.name}</strong> {post.date}</h4>              
+                  <div> 
+                    <h4>Por <h6>{post.name}</h6>  em  <DateFormat date={post.created_at} /></h4>  
+                    <h2>{post.title}</h2>            
                     <h5>{post.category}</h5> 
                   </div>      
                 </article>      

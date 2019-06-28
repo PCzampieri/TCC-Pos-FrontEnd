@@ -75,7 +75,7 @@ export const LastPost= styled(HeaderPost)`
     span {
       font-size: 10px;
       font-weight: 700;   
-      padding: 4px 10px;  
+      padding: 3px 10px;  
       border-radius: 20px;
       background: #000;
       color: #FFF;
@@ -178,9 +178,10 @@ export const CategoriesList = styled(HeaderPost)`
       align-items: center;
       justify-content: center;            
       font-size: 16px;
-      line-height: 20px; 
+      line-height: 22px; 
       font-weight: bold;
       text-decoration: none;
+      color: #000;
     }
   }
 `
@@ -228,7 +229,12 @@ export const CardPost= styled(PostList)`
           color: #fff;
           padding: 1px 10px;
           border-radius: 10px; 
-        }      
+        } 
+        h6 {
+          display: inline-block;
+          color: rgba(0,0,0,0.5);
+          font-size: 18px;
+        }     
       }
      
       img {      

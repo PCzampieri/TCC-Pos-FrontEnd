@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Table, Icon, Button, Confirm } from 'semantic-ui-react'
-import moment from 'moment'
 
 import { TableBg } from './HomeAdminStyles'
 
+import DateFormat from '../../../components/DateFormat'
 import Header from '../Header'
 import api from '../../../services/api'
 
@@ -68,7 +68,7 @@ const HomeAdmin = props => {
                 <Table.Row key={post.id}>
                   <Table.Cell>{post.title}</Table.Cell>
                   <Table.Cell>{post.category}</Table.Cell>
-                  <Table.Cell>{post.created_at}</Table.Cell>
+                  <Table.Cell><DateFormat date={post.created_at} /></Table.Cell>
                   <Table.Cell collapsing textAlign='right'>               
                     <Link to={{ pathname: `/admin/editpost/${post.id}`}}>
                       <Button basic color='blue' ><Icon name='edit outline'/>Editar </Button>&nbsp;

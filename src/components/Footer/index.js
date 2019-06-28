@@ -14,8 +14,7 @@ const Footer = () => {
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='FullStack Developer' />
-              <List link inverted>
-                <List.Item >Home</List.Item>
+              <List link inverted>               
                 <List.Item >NodeJS</List.Item>
                 <List.Item >ReactJS</List.Item>
                 <List.Item >React Native</List.Item>                  

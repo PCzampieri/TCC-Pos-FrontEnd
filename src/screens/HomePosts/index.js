@@ -44,7 +44,7 @@ const HomePosts = () => {
           <article>
             <img src={`http://localhost:3001/files/${post.image_url}`} alt='image' />  
             <div> 
-              <h4>Por: <b>{post.name}</b> em <DateFormat date={post.created_at} /></h4>            
+              <h4>Por: <h6>{post.name}</h6> em <DateFormat date={post.created_at} /></h4>            
               <h2>{post.title}</h2>                        
               <h5>{post.category}</h5> 
             </div>           
@@ -62,7 +62,7 @@ const HomePosts = () => {
         <div>
           <h1>Categorias</h1>
           {
-            categories.map(cat =>  (<span key={cat.id}><Link to={`/posts/category/${cat.id}`} >
+            categories.map(cat =>  (<span key={cat.id}><Link to={`/posts/category/${cat.id}`} style={{color:'#000'}} >
                                       {cat.name}
                                       </Link></span>)
                                     )

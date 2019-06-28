@@ -9,24 +9,23 @@ export const Header = styled(MainPost)`
   max-width: 700px;  
   padding-top: 20px; 
   padding-bottom: 20px;
-  
+
   h2 {
     font-size: 56px;  
     color: #111111;  
   }
-  h3 {
+  h3, span {
     margin-top: 30px;
     font-size: 16px;
     color: #555555;
   }
-  span {
+  h6 {
+    display: inline-block;
+    background: #f9541e;
+    color: #fff;
     font-size: 14px;
-    color: #333333;
-    background: #f4f4f4;
-    font-weight: 700;   
-    padding: 4px 10px;  
-    border-radius: 20px;
-    margin: 0;   
+    padding: 1px 10px;
+    border-radius: 10px;
   }
   hr {
     margin-top: 20px;

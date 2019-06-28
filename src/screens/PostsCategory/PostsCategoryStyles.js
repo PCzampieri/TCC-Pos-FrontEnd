@@ -39,6 +39,7 @@ export const CardPost= styled(PostList)`
   
     article {     
       width: 100%;
+      height: 490px;
       margin: 0;
       padding: 0;    
       background: #fff;  
@@ -49,15 +50,33 @@ export const CardPost= styled(PostList)`
       
 
       div {
-        padding: 25px 0 25px 25px;      
-        margin:0;      
-      }
-      h2 {
+        padding: 0px 0 0px 25px;      
+        margin:0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        h2 {
         font-size: 1.6rem;
-      }
-      h4 {
-        font-size: 1rem;
-      }
+        color: #000;
+        }
+        h4 {
+          font-size: 14px;
+          color: rgba(0,0,0,0.5);
+        }
+        h5 {
+            background: #f9541e;
+            color: #fff;
+            padding: 1px 10px;
+            border-radius: 10px; 
+          } 
+        h6 {
+            display: inline-block;
+            color: rgba(0,0,0,0.5);
+            font-size: 18px;
+          }      
+        }
+      
       img {      
         width: 100%;
         border-radius: 5px 5px 0 0;
