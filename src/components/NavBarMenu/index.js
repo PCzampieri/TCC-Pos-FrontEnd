@@ -29,9 +29,9 @@ const NavBarMenu = () => {
         <input type='checkbox' id='toggle' />
         <div className='menu'>
           <Link to='/'>Home</Link>
-          <Link to='/postscategory'>NodeJS</Link>
-          <a href='#'>ReactJS</a>
-          <a href='#'>React Native</a>        
+          <Link to='/posts/category/1' >NodeJS</Link>
+          <Link to='/posts/category/2' >ReactJS</Link>
+          <Link to='/posts/category/3' >React Native</Link>              
         </div>      
       </Nav>
      

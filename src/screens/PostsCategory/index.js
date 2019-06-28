@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import api from '../../services/api'
 import HeaderHome from '../../components/NavBarMenu'
@@ -39,14 +40,16 @@ const CategoriesPosts = (props) => {
           { error ? (<p>Nenhum registro encontrado!</p>) :
             posts.map(post => (
             <CardPost>
-              <article>
-                <img src={`http://localhost:3001/files/${post.image_url}`} alt='image reactjs' />  
-                <div>          
-                  <h2>{post.title}</h2>
-                  <h4>Por <strong>{post.name}</strong> {post.date}</h4>              
-                  <h5>{post.category}</h5> 
-                </div>      
-              </article>      
+              <Link to={`/posts/${post.id}`}>
+                <article>
+                  <img src={`http://localhost:3001/files/${post.image_url}`} alt='image reactjs' />  
+                  <div>          
+                    <h2>{post.title}</h2>
+                    <h4>Por <strong>{post.name}</strong> {post.date}</h4>              
+                    <h5>{post.category}</h5> 
+                  </div>      
+                </article>      
+              </Link>
             </CardPost>  ))
           }
         </Grid>

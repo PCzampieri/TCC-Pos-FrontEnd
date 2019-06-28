@@ -12,7 +12,8 @@ export const PostList = styled.section`
     font-size: 3rem;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;  
+    text-decoration: none;  
   }
   
   @media (min-width: 320px) {    
@@ -45,12 +46,8 @@ export const LastPost= styled(HeaderPost)`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;  
   
-  header {  
-    width: 50%;  
-    padding: 60px 0px 60px 60px;
-  }
   div {     
     width: 50%;
     padding: 0;
@@ -58,25 +55,47 @@ export const LastPost= styled(HeaderPost)`
     display: flex;
     align-items: center;
     justify-content: center;  
-  } 
-  img {
-    width: 100%;  
-    margin: 0;
-    padding: 0;   
-    border-radius: 5px 0 0 5px;  
+
+    img {
+      width: 100%;  
+      margin: 0;
+      padding: 0;   
+      border-radius: 5px 0 0 5px;  
+    }
   }
-  span {
-    font-size: 10px;
-    font-weight: 700;   
-    padding: 4px 10px;  
-    border-radius: 20px;
-    background: #000;
-    color: #FFF;
-    margin: 0;
-  }  
-  h2 {
-    font-size: 2.2rem;  
+  
+  header {  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;  
+    width: 50%; 
+    padding-left: 60px; 
+    
+    span {
+      font-size: 10px;
+      font-weight: 700;   
+      padding: 4px 10px;  
+      border-radius: 20px;
+      background: #000;
+      color: #FFF;
+      margin: 0;
+    }  
+    h2 {
+      font-size: 2.2rem;  
+      color: #000;
+    }
+    h4{
+      color: rgba(0,0,0,0.5);    
+    }
+    h5 {
+      background: #f9541e;
+      color: #fff;
+      padding: 1px 10px;
+      border-radius: 10px; 
+    }
   }
+  
   :hover {
     cursor: pointer;
   }
@@ -88,7 +107,11 @@ export const LastPost= styled(HeaderPost)`
       padding: 30px 20px 30px 30px;
     }
     h2 {
-      font-size: 1.6rem;  
+      font-size: 1.6rem; 
+      color: #000; 
+    }
+    h4, h5 {
+    color: #000;    
     }
     img {
       border-radius: 5px 5px 0 0;  
@@ -120,7 +143,8 @@ export const CategoriesList = styled(HeaderPost)`
     }    
     h1 {
       font-size: 24px;  
-      border-bottom: 3px solid #f5f5f5;  
+      border-bottom: 3px solid #f5f5f5; 
+      color: #000; 
     }
     span {
       display: flex;
@@ -129,6 +153,7 @@ export const CategoriesList = styled(HeaderPost)`
       font-size: 16px;
       font-weight: bold;
       text-decoration: none;
+      color: #000;
     }
   }
   @media (max-width: 991px) { 
@@ -146,6 +171,7 @@ export const CategoriesList = styled(HeaderPost)`
     h1 {
       font-size: 24px;  
       border-bottom: 3px solid #f5f5f5;  
+      color: #000;
     }
     span {      
       display: flex;      
@@ -166,12 +192,12 @@ export const CardPost= styled(PostList)`
     margin: auto;
     padding: 0px;
   
-    article {     
+    article {           
       width: 100%;
       max-width: 360px;            
       margin: 0;  
       margin-top: 20px;  
-      
+      height: 490px;
       padding: 0;    
       background: #fff;  
       border-radius: 5px;  
@@ -181,19 +207,34 @@ export const CardPost= styled(PostList)`
       
 
       div {
-        padding: 25px 0 25px 25px;      
-        margin:0;      
+        padding: 0px 0 0px 25px;      
+        margin:0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+
+        h2 {
+          display: block;
+          font-size: 1.6rem;
+          color: #000;
+        }
+        h4 {
+          font-size: 14px;
+          color: rgba(0,0,0,0.5);                 
+        }
+        h5 {
+          background: #f9541e;
+          color: #fff;
+          padding: 1px 10px;
+          border-radius: 10px; 
+        }      
       }
-      h2 {
-        display: block;
-        font-size: 1.6rem;
-      }
-      h4 {
-        font-size: 1rem;
-      }
+     
       img {      
         width: 100%;
         border-radius: 5px 5px 0 0;
+        border-bottom: 1px solid #a0a0a0 
       }
       :hover {
       cursor: pointer;         
@@ -222,9 +263,14 @@ export const CardPost= styled(PostList)`
       }
       h2 {
         font-size: 1.8rem;
+        color: #000;
       }
       h4 {
         font-size: 1.2rem;
+        color: #000;
+      }
+      h5 {
+        color: #000;
       }
       img {      
         width: 100%;
@@ -243,8 +289,7 @@ export const CardPost= styled(PostList)`
   
     article {     
       width: 100%;
-      margin: 0;
-      
+      margin: 0;      
       
       padding: 0;    
       background: #fff;  
@@ -258,9 +303,14 @@ export const CardPost= styled(PostList)`
       }
       h2 {
         font-size: 1.8rem;
+        color: #000;
       }
       h4 {
         font-size: 1.2rem;
+        color: #000;
+      }
+      h5 {
+        color: #000;
       }
       img {      
         width: 100%;

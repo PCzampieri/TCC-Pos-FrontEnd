@@ -35,7 +35,7 @@ export const Nav = styled.div`
       position: relative;
       z-index: 1000;
       display:block;
-      cursor: pointer;
+      cursor: pointer;      
     }
     .menu { 
       position: relative;

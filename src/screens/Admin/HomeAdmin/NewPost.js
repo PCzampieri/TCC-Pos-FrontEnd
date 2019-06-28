@@ -13,8 +13,7 @@ import api from '../../../services/api'
 
 const NewPost = props => {
   const [ title, setTitle ] = useState('')
-  const [ post, setPost ] = useState('')
-  const [ date, setDate ] = useState('')
+  const [ post, setPost ] = useState('')  
   const [ image_url, setImage_url ] = useState(null)
   const [ categoryId, setCategoryId ] = useState(null)
   const [ category, setCategory ] = useState([])
@@ -51,8 +50,7 @@ const NewPost = props => {
       const data = new FormData()
 
       data.append('title', title)
-      data.append('post', post)
-      data.append('date', date)
+      data.append('post', post)      
       data.append('image_url', image_url)
       data.append('category_id', categoryId)
       data.append('user_id', user_id)
@@ -60,8 +58,7 @@ const NewPost = props => {
       await api.post('/posts', data)
       
       setTitle('')
-      setPost('')
-      setDate('')
+      setPost('')      
       setImage_url(null)
       setCategoryId(null)
       setIsErrorValid(false)
@@ -106,12 +103,9 @@ const NewPost = props => {
     <div>
       <Header />
       <Container>
+     
         <Form method='POST' >        
-          <h1>Novo Post</h1>   
-          { catNull && <p>Selecione uma Categoria!</p> } 
-          { imageNull && <p>Selecione uma Imagem!</p> }      
-          { isErrorValid && errorValid.map( (err, index) => <p key={index}>{err.msg}</p>)}
-          { success && <Redirect to='/admin/homeadmin' />}          
+          <h1>Novo Post</h1>                     
           <select  name='category' value={categoryId} onChange={({ target }) => setCategoryId(target.value)}  >           
             <option>Selecione uma Categoria</option>
             { category.map(cat => (<option value={cat.id} key={cat.id}>{cat.name}</option>)) }
@@ -126,15 +120,13 @@ const NewPost = props => {
             placeholder='Digite o Título do Post'
             value={title} 
             onChange={({ target }) => setTitle(target.value)}  
-          />
-          <input 
-            type='text' 
-            placeholder='Digite a Data do Post'
-            value={date} 
-            onChange={({ target }) => setDate(target.value)} 
-          />  
+          />           
           <PostBg>
             <SimpleMDE value={post} onChange={(valor)=> setPost(valor)} />
+            { catNull && <p>Selecione uma Categoria!</p> } 
+            { imageNull && <p>Selecione uma Imagem!</p> }      
+            { isErrorValid && errorValid.map( (err, index) => <p key={index}>{err.msg}</p>)}
+            { success && <Redirect to='/admin/homeadmin' />} 
             <BaseButton>
               <Button primary type='submit' onClick={handleSubmit}>Salvar Post</Button>&nbsp;&nbsp;
               <Button onClick={() => setSeccess(true)}>Cancelar</Button>

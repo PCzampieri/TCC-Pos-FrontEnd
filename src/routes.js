@@ -38,8 +38,8 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>            
         <Route exact path='/' component={Home} />
-        <Route path='/posts/:id' component={Post} />
         <Route path='/posts/category/:id' component={PostsCategory} />
+        <Route path='/posts/:id' component={Post} />        
         <Route exact path='/admin' component={Login} />
         <PrivateRoute path='/admin/homeadmin' component={HomeAdmin} />
         <PrivateRoute path='/admin/newpost' component={NewPost} />

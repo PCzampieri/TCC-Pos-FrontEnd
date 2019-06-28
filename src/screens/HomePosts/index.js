@@ -4,15 +4,11 @@ import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import HeaderHome from '../../components/NavBarMenu'
 import Footer from '../../components/Footer'
+import DateFormat from '../../components/DateFormat'
 
-import { Icon, Grid, Divider, Header, Segment, Image } from 'semantic-ui-react'
+import { Icon, Grid, Divider, Header } from 'semantic-ui-react'
 
 import { PostList, LastPost, CardPost, CategoriesList, HeaderPost }from './HomeStyles'
-
-import nodejs from '../../assets/images/nodejs.png'
-import reactjs from '../../assets/images/react.jpg'
-import js from '../../assets/images/javascript.png'
-
 
 const HomePosts = () => {
   const [ posts, setPosts ] = useState([])
@@ -43,18 +39,18 @@ const HomePosts = () => {
 
   const renderPosts = (post) => {
     return (
-      <Link to={`/posts/${post.id}`} >
-        <CardPost key={post.id}>
+      <CardPost key={post.id}>
+        <Link style={{textDecoration: 'none'}} to={`/posts/${post.id}`} >
           <article>
             <img src={`http://localhost:3001/files/${post.image_url}`} alt='image' />  
-            <div>          
-              <h2>{post.title}</h2>
-              <h4>Por <strong>{post.name} </strong>{post.date}</h4>              
+            <div> 
+              <h4>Por: <b>{post.name}</b> em <DateFormat date={post.created_at} /></h4>            
+              <h2>{post.title}</h2>                        
               <h5>{post.category}</h5> 
-            </div>      
-          </article>      
-        </CardPost> 
-      </Link>
+            </div>           
+          </article> 
+        </Link>     
+      </CardPost> 
     )
   }
 
@@ -66,12 +62,15 @@ const HomePosts = () => {
         <div>
           <h1>Categorias</h1>
           {
-            categories.map(cat =>  (<span><Link to={`/posts/category/${cat.id}`}>{cat.name}</Link></span>))
+            categories.map(cat =>  (<span key={cat.id}><Link to={`/posts/category/${cat.id}`} >
+                                      {cat.name}
+                                      </Link></span>)
+                                    )
           }          
         </div>
       </CategoriesList>      
       
-      <Link to={`/posts/${lastPost.id}`}>
+      <Link to={`/posts/${lastPost.id}`} style={{textDecoration: 'none'}}>
         <LastPost>        
           <div>        
             <img src={`http://localhost:3001/files/${lastPost.image_url}`} alt='image' />  
@@ -79,7 +78,7 @@ const HomePosts = () => {
           <header>          
             <span><Icon name='star'/> DESTAQUE</span>   
             <h2>{lastPost.title}</h2>
-            <h4>Por <strong>{lastPost.name}</strong> {lastPost.date}</h4>
+            <h4>Por <strong>{lastPost.name}</strong></h4>
             <h5>{lastPost.category}</h5>
           </header>
         </LastPost>      

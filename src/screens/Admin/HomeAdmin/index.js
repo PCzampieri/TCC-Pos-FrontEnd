@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Table, Icon, Button, Confirm } from 'semantic-ui-react'
+import moment from 'moment'
 
 import { TableBg } from './HomeAdminStyles'
 
@@ -11,14 +12,17 @@ const HomeAdmin = props => {
   const [ posts, setPosts ] = useState([])
   const [ open, setOpen ] = useState(false)
   const [ postId, setPostId ] = useState(0)
-
+  
   useEffect(() => {
     async function fectData() {
       const postsApi = await api.get('/posts')
       setPosts(postsApi.data.data)      
     }
+    fectData()    
+    return () => {
+      
+    }
     
-    fectData()
   }, [])
 
   const show = (id) => {
@@ -59,12 +63,12 @@ const HomeAdmin = props => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-            {
+            { posts &&
               posts.map(post => (
                 <Table.Row key={post.id}>
                   <Table.Cell>{post.title}</Table.Cell>
                   <Table.Cell>{post.category}</Table.Cell>
-                  <Table.Cell>{post.date}</Table.Cell>
+                  <Table.Cell>{post.created_at}</Table.Cell>
                   <Table.Cell collapsing textAlign='right'>               
                     <Link to={{ pathname: `/admin/editpost/${post.id}`}}>
                       <Button basic color='blue' ><Icon name='edit outline'/>Editar </Button>&nbsp;
